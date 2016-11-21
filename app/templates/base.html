@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ISOKO</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"> {% block css %}{% endblock %}
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}"><i class="fa fa-opencart" aria-hidden="true"></i>  ISOKO</a>
+        {% if not current_user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ url_for('auth.login') }}"></a>LOG IN</li>
+          <li><a href="{{ url_for('auth.signup') }}"></a>GET STARTED</li>
+        </ul>
+        {% else %}
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="#">New Store</a></li>
+          <li><a href="#">My Store</a></li>
+        </ul>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-right">
+          <li><p class="navbar-text"><i class="fa fa-user-circle-o" aria-hidden="true"></i>  {{ current_user.username }}</p></li>
+          <li><a  href="{{ url_for('auth.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>LOG OUT</a></li>
+        </ul>
+        {% endif %}
+      </div>
+    </nav>
+    <!-- Child template -->
+    {% block body %}{% endblock %}
+
+
+    <!-- errors -->
+    {% if error %}
+      <div class="alert alert-warning"><p><strong>Error:</strong> {{ error }}</p></div>
+    {% endif %}
+
+    <!-- messages -->
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-info text-center" style="margin: 0px 300px 0px 300px;">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ message }}
+    </div>
+    {% endfor %}
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    {% block js %}{% endblock %}
+  </body>
+</html>
