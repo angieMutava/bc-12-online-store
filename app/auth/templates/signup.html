@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<section class="signup">
+  <center>
+    <h3>Get Started</h3>
+    <div class="container-fluid">
+      {% if form.errors %}
+        <div class="has-error"><strong>Your registration contains errors.</strong></div>
+      {% endif %}
+      <div>
+        <div class="form-group">
+          <form method=post>
+            {{ form.hidden_tag() }}
+            <dl>
+              <dd>{{ form.fname(class_="u-full-width", placeholder="First Name", maxlength=100) }}
+              <dd>{{ form.lname(class_="u-full-width", placeholder="Last Name", maxlength=100) }}
+              <dd>{{ form.username(class_="u-full-width", placeholder="Username", maxlength=64) }}
+              <dd>{{ form.email(class_="u-full-width", placeholder="Email", maxlength=64) }}
+              <dd>{{ form.password(class_="u-full-width", placeholder="Password") }}
+              <dd>{{ form.confirm(class_="u-full-width", placeholder="Repeat Password") }}
+              <dt>{{ form.submit }}
+            </dl>
+          </form>
+        </div>
+      </div>
+      <div>
+        <p>Have an Account? <a href="{{ url_for('auth.login') }}">Click here to login.</a></p>
+      </div>
+    </div>
+  </center>
+</section>
+{% endblock %}
