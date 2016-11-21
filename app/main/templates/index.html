@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <section class="landing">
+    <center>
+      <div class="container-fluid">
+        <div class="welcome">
+          <h1>ISOKO</h1>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6 signup">
+              <button type="button" class="btn btn-block"><a href="{{ url_for('auth.login') }}">LOG IN</a></button>
+            </div>
+            <div class="col-sm-6 login">
+              <button type="button" class="btn btn-block"><a href="{{ url_for('auth.signup') }}">GET STARTED</a></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </center>
+  </section>
+{% endblock %}
