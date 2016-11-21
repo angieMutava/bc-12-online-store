@@ -1,0 +1,96 @@
+body {
+  font-family: 'Questrial', sans-serif;
+}
+
+.navbar-default .navbar-nav {
+  list-style: none;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav li a{
+  color: #000000;
+  padding: 20px 30px 15px 30px;
+  margin: 0px;
+  font-size: 14pt;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav ul {
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+.fa {
+  font-size: 20px;
+}
+
+/*index.html*/
+
+
+.landing {
+  background:
+    linear-gradient(
+        rgba(255, 255, 255, 0.45),
+        rgba(255, 255, 255, 0.45)
+      ),
+      url(../img/dual.jpg) no-repeat center fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	-ms-background-size: cover;
+  	min-height:680px;
+  font-family: 'Questrial', sans-serif;
+}
+
+.landing .welcome {
+  padding: 75px 20px 75px 20px;
+  margin: 50px 40px 20px 40px;
+  position: relative;
+  text-align:center;
+}
+
+.landing .welcome h1 {
+  font-size: 45pt;
+}
+
+.landing .login .btn {
+  background-color: #F6960E;
+}
+
+.landing .signup .btn {
+  background-color: #D0CAB2;
+}
+
+.landing .login .btn a{
+  text-decoration: none;
+}
+
+.landing .signup .btn a{
+  text-decoration: none;
+}
+
+.landing .signup,
+.landing .login {
+
+}
+
+/*login/signup*/
+
+form {
+  margin: 10px 0px 50px 0px;
+}
+
+.signup h3 {
+  margin-top: 150px;
+}
+
+.login h3 {
+  margin-top: 150px;
+}
