@@ -23,7 +23,14 @@ def overview():
     Displays current_user's availbable stores if any
     """
 
-    return render_template('overview.html')
+    user = User.query.filter_by(id=current_user.id).first()
+    my_store = user.store.all()
+    all_stores = 0
+    for i in my_store:
+        all_stores += 1
+    return render_template('overview.html', my_stores=my_store, all_stores=all_stores)
+
+    # return render_template('overview.html')
 
 
 @store_blueprint.route('/addstore', methods=['GET', 'POST'])
