@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+<section class="header">
+  <center>
+    <h2 class="title">The Proverbial Internal Server Error :/</h2>
+    <div class="container-fluid">
+      <p>The minions broke something :(</p>
+      <p>Log in to continue :)</p>
+      <button type="button" class="btn btn-block"><a href="{{ url_for('auth.login') }}">LOG IN</a></button>
+    </div>
+    </div>
+  </center>
+</section>
+{% endblock %}
