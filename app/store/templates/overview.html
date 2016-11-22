@@ -1,8 +1,23 @@
 {% extends "base.html" %}
 
 {% block body %}
-<section>
-  <h1>Your Stores</h1>
+<section class="dashboard">
+  <center>
+    <h1>Your Stores</h1>
+    <div class="available_stores">
+       {% if all_stores == 0 %}
+       <div>
+         <p>No available stores</p>
+         <a href="{{ url_for('store.store') }}" class="btn btn-info" role="button">NEW STORE</a>
+       </div>
+       {% else %}
+       <div>
+         <p>Number of Stores: {{ all_stores }}</p>
+         <a href="{{ url_for('store.store') }}" class="btn btn-info" role="button">NEW STORE</a>
+       </div>
+       {% endif %}
+    </div>
+  </center>
 </section>
 
 {% endblock %}
