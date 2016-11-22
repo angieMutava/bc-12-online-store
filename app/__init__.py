@@ -22,10 +22,12 @@ db = SQLAlchemy(app)
 
 from app.auth.views import auth_blueprint
 from app.main.views import main_blueprint
+from app.store.views import store_blueprint
 
 # register blueprints
 app.register_blueprint(auth_blueprint)
 app.register_blueprint(main_blueprint)
+app.register_blueprint(store_blueprint)
 
 
 from models import User
