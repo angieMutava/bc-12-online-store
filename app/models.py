@@ -36,8 +36,8 @@ class User(db.Model):
     def get_id(self):
         return unicode(self.id)
 
-    def __repr__(self):
-        return '<name - {}>'.format(self.name)
+    """def __repr__(self):
+        return '<{} {}>'.format(self.fname, self.lname)"""
 
 
 class Store(db.Model):
