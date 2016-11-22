@@ -29,8 +29,8 @@
         </ul>
         {% else %}
         <ul class="nav navbar-nav navbar-left">
+          <li><a href="{{ url_for('store.overview') }}">My Stores</a></li>
           <li><a href="{{ url_for('store.store') }}">New Store</a></li>
-          <li><a href="#">My Stores</a></li>
         </ul>
         {% endif %}
         {% if current_user.is_authenticated %}
