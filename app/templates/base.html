@@ -25,7 +25,7 @@
         </ul>
         {% else %}
         <ul class="nav navbar-nav navbar-left">
-          <li><a href="#">New Store</a></li>
+          <li><a href="{{ url_for('store.store') }}">New Store</a></li>
           <li><a href="#">My Store</a></li>
         </ul>
         {% endif %}
