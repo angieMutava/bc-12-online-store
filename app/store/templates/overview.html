@@ -16,6 +16,16 @@
          <a href="{{ url_for('store.store') }}" class="btn btn-info" role="button">NEW STORE</a>
        </div>
        {% endif %}
+       {% for store in stores_ %}
+        <ul class="list-group">
+        <p><td> <a href="{{ url_for('product.overview')}}" class="list-group-item-text">
+        {{store.store_name}}
+        </a></td>
+        </p>
+        {{ store.store_description }}
+        {{store.store_image}}
+        </ul>
+        {% endfor %}
     </div>
   </center>
 </section>
