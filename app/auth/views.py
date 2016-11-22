@@ -9,11 +9,10 @@ from flask_login import login_user, login_required, logout_user, current_user
 auth_blueprint = Blueprint(
     'auth', __name__,
     template_folder='templates'
-)
+    )
+
 
 ###### ROUTES ######
-
-
 # Route for handling the login page logic
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
@@ -28,7 +27,7 @@ def login():
             if user is not None and bcrypt.check_password_hash(user.password, request.form['password']):
                 login_user(user)
                 flash('You were just logged in!')
-                return redirect(url_for('main.overview'))
+                return redirect(url_for('store.overview'))
             else:
                 error = 'Invalid credentials. Please try again.'
     return render_template('login.html', form=form, error=error)
