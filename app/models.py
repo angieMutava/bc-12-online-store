@@ -14,7 +14,7 @@ class User(db.Model):
     email = db.Column(db.String, nullable=False)
     username = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
-    store = relationship("Store", backref="owner")
+    user_stores = db.relationship("Store", backref="owner", lazy='dynamic')
 
     def __init__(self, fname, lname, email, username, password):
         self.fname = fname
@@ -23,7 +23,7 @@ class User(db.Model):
         self.username = username
         self.password = bcrypt.generate_password_hash(password)
 
-    # Use usermixin as an alternative the the below flask-login methods
+    # flask-login methods
     def is_authenticated(self):
         return True
 
@@ -47,13 +47,12 @@ class Store(db.Model):
     store_name = db.Column(db.String, nullable=False)
     store_description = db.Column(db.String, nullable=False)
     store_image = db.Column(db.String, nullable=False)
-    store_owner = db.Column(db.Integer, ForeignKey('users.id'))
+    store_owner = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def __init__(self, id, store_name, store_description, store_owner, store_image="na.jpg"):
+    def __init__(self, store_name, store_description, store_image=None):
         self.store_name = store_name
         self.store_description = store_description
         self.store_image = store_image
-        self.store_owner = store_owner
 
     def __repr__(self):
-        return '<{} {} {} {}>'.format(self.store_name, self.store_description, self.store_image, self.store_owner)
+        return '<{0} {1} {2} {3}>'.format(self.store_name, self.store_description, self.store_image, self.store_owner)
