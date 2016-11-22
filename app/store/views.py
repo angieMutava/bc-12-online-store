@@ -23,8 +23,8 @@ def overview():
     Displays current_user's availbable stores if any
     """
 
-    """user = User.query.filter_by(id=current_user.id).first()
-    created_stores = user.store.all()
+    """user = User.query.filter_by(id=current_user.id).all()
+    created_stores = user.user_stores
     all_stores = 0
     for i in created_stores:
         all_stores += 1
@@ -40,19 +40,23 @@ def store():
     Creates a new store
     """
     form = StoreForm()
-    if form.validate_on_submit():
+    if request.method == "GET":
+        return render_template('addstore.html', form=form)
+    elif request.method == "POST":
+        if form.validate_on_submit():
+            user = User.query.filter_by(id=current_user.id).first()
+            created_stores = Store(store_name=form.store_name.data, store_description=form.store_desc.data, store_image=form.store_img.data)
+
+            user.store.append(created_stores)
+            db.session.add(created_stores)
+            db.session.commit()
+            flash("Store added successfully!")
+            return redirect(url_for('store.overview'))
+
         user = User.query.filter_by(id=current_user.id).first()
-        created_stores = Store(store_name=form.store_name.data, store_description=form.store_desc.data, store_image=form.store_img.data)
+        my_store = user.store.all()
+        all_stores = 0
+        for i in my_store:
+            all_stores += 1
 
-        user.store.append(created_stores)
-        db.session.add(created_stores)
-        db.session.commit()
-        flash("Store added successfully!")
-
-    user = User.query.filter_by(id=current_user.id).first()
-    my_store = user.store.all()
-    all_stores = 0
-    for i in my_store:
-        all_stores += 1
-
-    return render_template('addstore.html', store=my_store, all_stores=all_stores)
+        return render_template('addstore.html', store=my_store, all_stores=all_stores)
