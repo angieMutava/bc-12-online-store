@@ -24,8 +24,8 @@ def product():
         return render_template('addproduct.html', form=form)
     elif request.method == "POST":
         if form.validate_on_submit():
-            user = User.query.filter_by(id=current_user.id).first()
-            created_products = Product(product_name=form.product_name.data, product_description=form.product_desc.data, product_image=form.product_img.data)
+            store = Store.query.filter_by(id=current_user.id).first()
+            created_products = Product(product_name=form.product_name.data, product_description=form.product_desc.data, store_home=store.id, product_image=form.product_img.data)
 
             db.session.add(created_products)
             db.session.commit()
@@ -33,32 +33,32 @@ def product():
             return redirect(url_for('store.overview'))
 
         store = Store.query.filter_by(id=current_user.id).first()
-        my_product = store.products.all()
+        display_product = store.store_product.all()
         all_products = 0
-        for i in my_product:
+        for i in display_product:
             all_products += 1
 
-        return render_template('addproduct.html', form=form, product=my_product, all_products=all_products)
-
-
-# Custom store url route
-@product_blueprint.route('/product/<username>/<storeid>')
-def store_url(user_name, store_id):
-    user = User.query.filter_by(id=current_user.id)
-    user_name = user.username
-    store = Stores.query.filter_by(user_id=current_user).first()
-    store_id = store.id
-    with product.test_request_context():
-        return render_template('overview.html', user_name=user_name, store_id=store_id)
+        return render_template('addproduct.html', form=form, display_products=display_product, all_products=all_products)
 
 
 @product_blueprint.route('/overview', methods=['GET', 'POST'])
 @login_required
 def overview():
-    store = Store.query.filter_by(user_id=current_user.id).first()
-    my_product = store.products.all()
+    store = Store.query.filter_by(store_owner=current_user.id).first()
+    display_product = store.store_product.all()
 
     all_products = 0
-    for i in my_product:
+    for i in display_product:
         all_products += 1
-    return render_template('viewstore.html', my_products=my_product, all_products=all_products)
+    return render_template('viewstore.html', display_products=display_product, all_products=all_products)
+
+
+# Custom store url route
+@product_blueprint.route('/product/<int:username>/<int:storeid>', methods=['GET'])
+def store_url(username, storeid):
+    user = User.query.filter_by(id=current_user.id)
+    username = user.username
+    store = Store.query.filter_by(store_owner=current_user).first()
+    storeid = store.id
+    with product.test_request_context():
+        return render_template('overview.html', username=username, storeid=storeid)
