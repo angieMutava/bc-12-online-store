@@ -19,7 +19,7 @@ product_blueprint = Blueprint(
 @login_required
 def product():
     "Creates a new product in a store"
-    form = ProdutForm()
+    form = ProductForm()
     if request.method == "GET":
         return render_template('addproduct.html', form=form)
     elif request.method == "POST":
@@ -33,7 +33,7 @@ def product():
             return redirect(url_for('store.overview'))
 
         store = Store.query.filter_by(id=current_user.id).first()
-        my_product = user.products.all()
+        my_product = store.products.all()
         all_products = 0
         for i in my_product:
             all_products += 1
@@ -42,7 +42,7 @@ def product():
 
 
 # Custom store url route
-@product_blueprint.route('/product/<username>/<storeid>', methods=['GET', 'POST'])
+@product_blueprint.route('/product/<username>/<storeid>')
 def store_url(user_name, store_id):
     user = User.query.filter_by(id=current_user.id)
     user_name = user.username
