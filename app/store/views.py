@@ -22,15 +22,15 @@ def overview():
 
     Displays current_user's availbable stores if any
     """
-
+    """
     user = User.query.filter_by(id=current_user.id).first()
-    my_store = user.store.all()
+    my_store = user.owner.all()
     all_stores = 0
     for i in my_store:
         all_stores += 1
-    return render_template('overview.html', my_stores=my_store, all_stores=all_stores)
+    return render_template('overview.html', my_stores=my_store, all_stores=all_stores)"""
 
-    # return render_template('overview.html')
+    return render_template('overview.html')
 
 
 @store_blueprint.route('/addstore', methods=['GET', 'POST'])
@@ -54,9 +54,9 @@ def store():
             return redirect(url_for('store.overview'))
 
         user = User.query.filter_by(id=current_user.id).first()
-        my_store = user.store.all()
+        my_store = user.owner.store.all()
         all_stores = 0
         for i in my_store:
             all_stores += 1
 
-        return render_template('addstore.html', store=my_store, all_stores=all_stores)
+        return render_template('addstore.html', my_stores=my_store, all_stores=all_stores)
