@@ -37,7 +37,7 @@ class User(db.Model):
         return unicode(self.id)
 
     def __repr__(self):
-        return '<User %r>' % self.id
+        return ""  # '<User %r>' % self.id
 
 
 class Store(db.Model):
@@ -56,7 +56,7 @@ class Store(db.Model):
         self.store_image = store_image
 
     def __repr__(self):
-        return '<Store %r>' % self.name
+        return ""  # '<Store %r>' % self.store_name
 
 
 class Product(db.Model):
@@ -72,6 +72,7 @@ class Product(db.Model):
         self.product_name = product_name
         self.product_description = product_description
         self.product_image = product_image
+        self.store_home = store_home
 
     def __repr__(self):
-        return '<Product %r>' % self.name
+        return ""  # '<Product %r>' % self.product_name

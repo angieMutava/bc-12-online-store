@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
+
 from flask import flash, redirect, render_template, request, url_for, Blueprint
-from forms import StoreForm
 from app import db
 from app.models import Store, User, Product
 from flask_login import login_required, current_user
@@ -7,8 +8,7 @@ from flask_login import login_required, current_user
 
 # Config
 store_blueprint = Blueprint(
-    'store', __name__,
-    template_folder='templates'
+    'store', __name__
 )
 
 
@@ -22,13 +22,12 @@ def overview():
 
     Displays current_user's availbable stores if any
     """
-
     user = User.query.filter_by(id=current_user.id).first()
     display_store = user.user_stores.all()
     all_stores = 0
     for i in display_store:
         all_stores += 1
-    return render_template('overview.html', display_stores=display_store, all_stores=all_stores)
+    return render_template('/store/overview.html', display_stores=display_store, all_stores=all_stores)
 
 
 @store_blueprint.route('/addstore', methods=['GET', 'POST'])
@@ -39,7 +38,7 @@ def store():
     """
     form = StoreForm()
     if request.method == "GET":
-        return render_template('addstore.html', form=form)
+        return render_template('store/addstore.html', form=form)
     elif request.method == "POST":
         if form.validate_on_submit():
             user = User.query.filter_by(id=current_user.id).first()
@@ -49,7 +48,8 @@ def store():
             db.session.add(created_stores)
             db.session.commit()
             flash("Store added successfully!")
-            return redirect(url_for('store.overview'))
+            # return redirect(url_for('store.overview'))
+            return redirect(request.args.get('next') or url_for('store.overview'))
 
         user = User.query.filter_by(id=current_user.id).first()
         display_store = user.user_stores.all()
@@ -58,4 +58,4 @@ def store():
         for i in display_store:
             all_stores += 1
 
-        return render_template('addstore.html', display_stores=display_store, all_stores=all_stores)
+        return render_template('store/addstore.html', display_stores=display_store, all_stores=all_stores)
