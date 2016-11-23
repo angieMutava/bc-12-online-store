@@ -50,7 +50,7 @@ class Store(db.Model):
     store_owner = db.Column(db.Integer, db.ForeignKey('users.id'))
     store_product = db.relationship("Product", backref="storage", lazy='dynamic')
 
-    def __init__(self, store_name, store_description, store_image=None):
+    def __init__(self, store_name, store_description, store_owner, store_image=None):
         self.store_name = store_name
         self.store_description = store_description
         self.store_image = store_image
@@ -68,7 +68,7 @@ class Product(db.Model):
     product_image = db.Column(db.String, nullable=False)
     store_home = db.Column(db.Integer, db.ForeignKey('store.id'))
 
-    def __init__(self, product_name, product_description, product_image=None):
+    def __init__(self, product_name, product_description, store_home, product_image=None):
         self.product_name = product_name
         self.product_description = product_description
         self.product_image = product_image
