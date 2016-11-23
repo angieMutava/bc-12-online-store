@@ -54,7 +54,7 @@ def overview():
 
 
 # Custom store url route
-@product_blueprint.route('/product/<int:username>/<int:storeid>', methods=['GET'])
+@product_blueprint.route('/product/<username>/<int:storeid>', methods=['GET', 'POST']])
 def store_url(username, storeid):
     user = User.query.filter_by(id=current_user.id)
     username = user.username
