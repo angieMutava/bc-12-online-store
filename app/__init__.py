@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt, check_password_hash, generate_password_hash
 from flask_login import LoginManager
 import os
 
+
 # Create the application object
 app = Flask(__name__)
 
