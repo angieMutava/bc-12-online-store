@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from flask import flash, redirect, render_template, request, url_for, Blueprint
+from flask import flash, redirect, render_template, request, url_for, Blueprint  # current_app
 from app import db
 from app.models import Store, User, Product
 from flask_login import login_required, current_user
+from forms import StoreForm
+# import os
+# from werkzeug.utils import secure_filename
 
 
 # Config
@@ -41,8 +44,14 @@ def store():
         return render_template('store/addstore.html', form=form)
     elif request.method == "POST":
         if form.validate_on_submit():
+            # file = request.files['store_image']
+            # filename = None
+            # if file and file.filename.split('.')[-1] in ['jpeg', 'png', 'jpg']:
+                # filename = secure_filename(file.filename)
+                # file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+
             user = User.query.filter_by(id=current_user.id).first()
-            created_stores = Store(store_name=form.store_name.data, store_description=form.store_desc.data, store_owner=current_user.id, store_image=form.store_img.data)
+            created_stores = Store(store_name=form.store_name.data, store_description=form.store_desc.data, store_owner=current_user.id)
 
             user.user_stores.append(created_stores)
             db.session.add(created_stores)

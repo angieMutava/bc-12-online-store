@@ -10,5 +10,5 @@ class StoreForm(Form):
     """
     store_name = StringField("Name: ", validators=[DataRequired("Please enter the store name."), Length(min=3, max=70, message="Store name should be more than 3 characters long and less than 70")])
     store_desc = TextAreaField("Description: ", validators=[Length(min=1, message="Description is too short")])
-    store_img = FileField("Store Image: ")
+    # store_img = FileField("Store Image: ")
     submit = SubmitField("Add Store")

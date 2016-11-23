@@ -1,8 +1,10 @@
-from flask import flash, redirect, render_template, request, url_for, Blueprint
+from flask import flash, redirect, render_template, request, url_for, Blueprint  # current_app
 from forms import ProductForm
 from app import db
 from app.models import Store, Product, User
 from flask_login import login_required, current_user
+# import os
+# from werkzeug.utils import secure_filename
 
 
 # Config
@@ -45,8 +47,14 @@ def product():
         return render_template('product/addproduct.html', form=form)
     elif request.method == "POST":
         if form.validate_on_submit():
+            # file = request.files['product_image']
+            # filename = None
+            # if file and file.filename.split('.')[-1] in ['jpeg', 'png', 'jpg']:
+                # filename = secure_filename(file.filename)
+                # file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+
             store = Store.query.filter_by(store_owner=current_user.id).first()
-            created_products = Product(product_name=form.product_name.data, product_description=form.product_desc.data, store_home=store.id, product_image=form.product_img.data)
+            created_products = Product(product_name=form.product_name.data, product_description=form.product_desc.data, store_home=store.id)
 
             db.session.add(created_products)
             db.session.commit()
