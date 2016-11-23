@@ -1,7 +1,7 @@
 from flask import flash, redirect, render_template, request, url_for, Blueprint
 from forms import StoreForm
 from app import db
-from app.models import Store, User
+from app.models import Store, User, Product
 from flask_login import login_required, current_user
 
 
@@ -22,15 +22,13 @@ def overview():
 
     Displays current_user's availbable stores if any
     """
-    """
-    user = User.query.filter_by(id=current_user.id).first()
-    my_store = user.owner.all()
-    all_stores = 0
-    for i in my_store:
-        all_stores += 1
-    return render_template('overview.html', my_stores=my_store, all_stores=all_stores)"""
 
-    return render_template('overview.html')
+    user = User.query.filter_by(id=current_user.id).first()
+    display_store = user.user_stores.all()
+    all_stores = 0
+    for i in display_store:
+        all_stores += 1
+    return render_template('overview.html', display_stores=display_store, all_stores=all_stores)
 
 
 @store_blueprint.route('/addstore', methods=['GET', 'POST'])
@@ -45,7 +43,7 @@ def store():
     elif request.method == "POST":
         if form.validate_on_submit():
             user = User.query.filter_by(id=current_user.id).first()
-            created_stores = Store(store_name=form.store_name.data, store_description=form.store_desc.data, store_image=form.store_img.data)
+            created_stores = Store(store_name=form.store_name.data, store_description=form.store_desc.data, store_owner=current_user.id, store_image=form.store_img.data)
 
             user.user_stores.append(created_stores)
             db.session.add(created_stores)
@@ -54,9 +52,10 @@ def store():
             return redirect(url_for('store.overview'))
 
         user = User.query.filter_by(id=current_user.id).first()
-        my_store = user.owner.store.all()
+        display_store = user.user_stores.all()
+        display_store.store_owner
         all_stores = 0
-        for i in my_store:
+        for i in display_store:
             all_stores += 1
 
-        return render_template('addstore.html', my_stores=my_store, all_stores=all_stores)
+        return render_template('addstore.html', display_stores=display_store, all_stores=all_stores)
