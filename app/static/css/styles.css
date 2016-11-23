@@ -4,6 +4,7 @@ body {
 
 .navbar-default .navbar-nav {
   list-style: none;
+  margin-bottom: 0px;
 }
 
 .navbar-default .navbar-brand,
@@ -51,7 +52,7 @@ body {
 
 .landing .welcome {
   padding: 75px 20px 75px 20px;
-  margin: 50px 40px 20px 40px;
+  margin: 0px 40px 20px 40px;
   position: relative;
   text-align:center;
 }
