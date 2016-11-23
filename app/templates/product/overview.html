@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block body %}
+<section class="dashboard">
+  <center>
+    <h1>Products</h1>
+    <div class="available_product">
+        {% if not current_user.is_authenticated %}
+        <li><a href="{{ url_for('auth.login') }}"></a>LOG IN</li>
+        {% else %}
+        <a href="{{ url_for('product.product') }}" class="btn btn-info" role="button">NEW PRODUCT</a>
+        {% endif %}
+       {% if all_products == 0 %}
+       <div>
+         <p>No available products</p>
+       </div>
+       {% else %}
+       <div>
+         <p>Number of Products: {{ all_products }}</p>
+       </div>
+       {% endif %}
+       {% for product in display_products %}
+        <ul class="list-group">
+            <p class="lead text-info">
+            {{ product.product_name }}</p>
+            {{ product.product_description }}
+            {{ product.product_image }}
+        </ul>
+        {% endfor %}
+    </div>
+  </center>
+</section>
+
+{% endblock %}
