@@ -8,15 +8,15 @@
        {% if all_products == 0 %}
        <div>
          <p>No available products</p>
-         <a href="{{ url_for('product.product') }}" class="btn btn-info" role="button">NEW STORE</a>
+         <a href="{{ url_for('product.product') }}" class="btn btn-info" role="button">NEW PRODUCT</a>
        </div>
        {% else %}
        <div>
          <p>Number of Products: {{ all_products }}</p>
-         <a href="{{ url_for('store.store') }}" class="btn btn-info" role="button">NEW STORE</a>
+         <a href="{{ url_for('product.product') }}" class="btn btn-info" role="button">NEW PRODUCT</a>
        </div>
        {% endif %}
-       {% for product in my_products %}
+       {% for product in display_products %}
         <ul class="list-group">
             <p class="lead text-info">
             {{product.product_name}}</p>

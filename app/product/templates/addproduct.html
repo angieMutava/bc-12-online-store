@@ -11,9 +11,9 @@
       <form method=post>
         {{ form.hidden_tag() }}
         <dl>
-           <dd>Name: {{ form.product_name(class_="u-full-width", placeholder="Store Name", maxlength=70)}}
-           <dd>Description: {{ form.product_desc(class_="u-full-width", placeholder="Store Description") }}
-           <dd>Image: {{ form.product_img(class_="u-full-width", placeholder="Store Image")}}
+           <dd>Name: {{ form.product_name(class_="u-full-width", placeholder="Product Name", maxlength=70)}}
+           <dd>Description: {{ form.product_desc(class_="u-full-width", placeholder="Product Description") }}
+           <dd>Image: {{ form.product_img(class_="u-full-width", placeholder="Product Image")}}
            <dt>{{ form.submit }}
          </dl>
        </form>
