@@ -22,7 +22,6 @@ store_blueprint = Blueprint(
 def overview():
     """
     Landing page when user logs in
-
     Displays current_user's availbable stores if any
     """
     user = User.query.filter_by(id=current_user.id).first()

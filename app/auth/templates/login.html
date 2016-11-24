@@ -12,19 +12,23 @@
           <div class="has-error"><strong>Unable to login.</strong></div>
         {% endif %}
         <div>
-          <div class="reg_form">
-            <form method=post>
+          <div class="sign_form">
+            <form action="" method="post" role="form">
               {{ form.hidden_tag() }}
-              <dl>
-               <dd> <i class="fa fa-envelope" aria-hidden="true"></i> {{ form.email(class_="u-full-width", placeholder="Email", maxlength=128)}}
-               <dd> <i class="fa fa-lock" aria-hidden="true"></i> {{ form.password(class_="u-full-width", placeholder="Password") }}
-               <dt>{{ form.submit }}
-             </dl>
+              <div class="form-group">
+                <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i><span style="color: red; margin-left: 20px;">*</span></label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                <br/>
+                <label for="password"><i class="fa fa-lock" aria-hidden="true"></i><span style="color: red; margin-left: 20px;">*</span></label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+              </div>
+              <p><span style="color: red; margin-right: 20px;">*</span>Required fields</p>
+              <button type="submit" class="btn btn-custom">Log In</button>
             </form>
           </div>
         </div>
         <div>
-          <p>New user? <a href="{{ url_for('auth.signup') }}">Click here to register</a>.</p>
+          <p>New user? Click <a href="{{ url_for('auth.signup') }}">here</a> to register.</p>
         </div>
       </div>
     </div>

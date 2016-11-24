@@ -7,7 +7,7 @@
     <div class="page-header text-center">
           <h1>New Product</h1>
     </div>
-    <div class= "jumbotron">
+    <div class= "jumbotron myjumbotron">
       <form method=post>
         {{ form.hidden_tag() }}
         <dl>
@@ -20,3 +20,16 @@
   </div>
 
 {% endblock %}
+
+
+<!-- <form action="" method="post" role="form">
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+    <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i></label>
+    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+    <br/>
+    <label for="password"><i class="fa fa-lock" aria-hidden="true"></i></label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-custom">Log In</button>
+</form>-->

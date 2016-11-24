@@ -13,27 +13,29 @@
         {% endif %}
         <div>
           <div class="reg_form">
-            <form method=post>
+            <form action="" method="post" role="form">
               {{ form.hidden_tag() }}
-              <dl>
-                <dd> <i class="fa fa-user" aria-hidden="true"></i>      {{ form.fname(class_="u-full-width", placeholder="First Name", maxlength=100) }}
-
-                <dd> <i class="fa fa-user" aria-hidden="true"></i>      {{ form.lname(class_="u-full-width", placeholder="Last Name", maxlength=100) }}
-
-                <dd> <i class="fa fa-user" aria-hidden="true"></i>      {{ form.username(class_="u-full-width", placeholder="Username", maxlength=64) }}
-
-                <dd> <i class="fa fa-envelope" aria-hidden="true"></i>  {{ form.email(class_="u-full-width", placeholder="Email", maxlength=64) }}
-
-                <dd> <i class="fa fa-lock" aria-hidden="true"></i>      {{ form.password(class_="u-full-width", placeholder="Password") }}
-
-                <dd> <i class="fa fa-lock" aria-hidden="true"></i>      {{ form.confirm(class_="u-full-width", placeholder="Repeat Password") }}
-
-                <dt>{{ form.submit }}
-              </dl>
+              <div class="form-group">
+                <label for="fname"><i class="fa fa-user" aria-hidden="true"></i><span style="color: red; margin-left: 20px;">*</span></label><input type="text" class="form-control" id="fname" name="fname" placeholder="First Name">
+                <br/>
+                <label for="lname"><i class="fa fa-user" aria-hidden="true"></i><span style="color: red; margin-left: 20px;">*</span></label><input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name">
+                <br/>
+                <label for="username"><i class="fa fa-user" aria-hidden="true"></i><span style="color: red; margin-left: 20px;">*</span></label><input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                <br/>
+                <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i><span style="color: red; margin-left: 20px;">*</span></label><input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                <br/>
+                <label for="password"><i class="fa fa-lock" aria-hidden="true"></i><span style="color: red; margin-left: 20px;">*</span></label><input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <br/>
+                <label for="confirm"><i class="fa fa-lock" aria-hidden="true"></i><span style="color: red; margin-left: 20px;">*</span></label><input type="password" class="form-control" id="confirm" name="confirm" placeholder="Repeat Password">
+              </div>
+              <p><span style="color: red; margin-right: 20px;">*</span>Required fields</p>
+              <button type="submit" class="btn btn-custom">Get Started</button>
+            </form>
+          </div>
             </form>
           </div>
         </div>
-          <p>Have an Account? <a href="{{ url_for('auth.login') }}">Click here to login.</a></p>
+          <p>Have an Account? Click <a href="{{ url_for('auth.login') }}">here</a> to login.</p>
         </div>
         </div>
       </div>
