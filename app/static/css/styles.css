@@ -16,7 +16,7 @@ html, body {
 /* NAVBAR*/
 
 /* make sidebar nav vertical */
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {*/
   .sidebar-nav .navbar {
     display: block;
     position: absolute;
@@ -25,20 +25,32 @@ html, body {
     text-align: center;
     padding: 25px 25px 25px 25px;
     margin-bottom: 0px;
-    width: 100%;
+    /*width: 100%;*/
     margin: 0px;
     padding: 0px;
     position:fixed !important;
+    left: 0;
+    bottom: 0;
+    top: 0;
     height: -moz-calc(100% - 40px);
     height: -webkit-calc(100% - 40px);
     height: calc(100% - 40px);
     display:block;
-
+    min-height:680px;
   }
-  /*.sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
-    max-height: none;
-  }*/
+
+.sidebar-nav .navbar .nav-pills {
+  width: auto;
+}
+
+.sidebar-nav .navbar .navbar-default {
+  background: #F6960E;
+}
+
+.navbar-default {
+    background-color: #F6960E;
+    border-color: transparent;
+  }
   .sidebar-nav .navbar ul {
     float: none;
     display: block;
