@@ -284,10 +284,21 @@ html, body {
 /* ########################### ADD - STORE & PRODUCTS ############################### */
 /* ####################################################################################### */
 
+
+.myjumbotron p {
+  font-size: 12pt;
+}
+
 .myjumbotron {
-  /*background-color: #E64545;*/
+  display: block;
+  width: 100%
 }
 
 .myjumbotron p {
   font-size: 12pt;
+}
+
+.add {
+  margin-top: 10px;
+  text-align: center;
 }
