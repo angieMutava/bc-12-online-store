@@ -285,7 +285,7 @@ html, body {
 /* ####################################################################################### */
 
 .myjumbotron {
-  /*background-color: #E64545;*/
+  display: block;
 }
 
 .myjumbotron p {
