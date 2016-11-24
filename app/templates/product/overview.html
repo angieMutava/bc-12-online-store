@@ -10,7 +10,7 @@
             <h1>Products</h1>
             <div class="available_stores">
                 {% if not current_user.is_authenticated %}
-                <li><a href="{{ url_for('auth.login') }}"></a>LOG IN</li>
+                <a href="{{ url_for('auth.login') }}" class="btn btn-custom" role="button">LOG IN</a>
                 {% else %}
                 <a href="{{ url_for('product.product') }}" class="btn btn-custom" role="button">ADD NEW PRODUCT</a>
                 {% endif %}
