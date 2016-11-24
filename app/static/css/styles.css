@@ -285,9 +285,14 @@ html, body {
 /* ####################################################################################### */
 
 .myjumbotron {
-  /*background-color: #E64545;*/
+  display: block;
 }
 
 .myjumbotron p {
   font-size: 12pt;
+}
+
+.add {
+  margin-top: 10px;
+  text-align: center;
 }
