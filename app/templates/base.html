@@ -15,52 +15,50 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
+    <section>
+      {% if current_user.is_authenticated %}
       <div class="container-fluid">
-        {% if not current_user.is_authenticated %}
-        <a class="navbar-brand" href="{{ url_for('main.index') }}"><i class="fa fa-opencart" aria-hidden="true"></i>  ISOKO</a>
-        {% else %}
-        <a class="navbar-brand" href="{{ url_for('store.overview') }}"><i class="fa fa-opencart" aria-hidden="true"></i>  ISOKO</a>
-        {% endif %}
-        {% if not current_user.is_authenticated %}
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{ url_for('auth.login') }}"></a>LOG IN</li>
-          <li><a href="{{ url_for('auth.signup') }}"></a>GET STARTED</li>
-        </ul>
-        {% else %}
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="{{ url_for('store.overview') }}">My Stores</a></li>
-          <li><a href="{{ url_for('store.store') }}">New Store</a></li>
-        </ul>
-        {% endif %}
-        {% if current_user.is_authenticated %}
-        <ul class="nav navbar-nav navbar-right">
-          <li><p class="navbar-text"><i class="fa fa-user-circle-o" aria-hidden="true"></i>  {{ current_user.username }}</p></li>
-          <li><a  href="{{ url_for('auth.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>LOG OUT</a></li>
-        </ul>
-        {% endif %}
+        <div class="row">
+          <div class="column">
+            <div class="col-md-3">
+              <div class="sidebar-nav">
+                <div class="navbar navbar-custom" role="navigation">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li class="row"><a href="{{ url_for('store.overview') }}"><i class="fa fa-opencart" aria-hidden="true"></i>  ISOKO</a></li><br/>
+                    <li class="row"><a href="{{ url_for('store.overview') }}">My Stores</a></li><br/>
+                    <li class="row"><a href="{{ url_for('store.store') }}">Create New Store</a></li><br/>
+                    <li class="row"><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>  {{ current_user.username }}</a></li><br/>
+                    <li class="row"><a href="{{ url_for('auth.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>  LOG OUT</a></li><br/>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
       </div>
-    </nav>
-    <!-- Child template -->
-    {% block body %}{% endblock %}
+      <!-- Child template -->
+      {% block body %}{% endblock %}
 
 
-    <!-- errors -->
-    {% if error %}
-      <div class="alert alert-warning"><p><strong>Error:</strong> {{ error }}</p></div>
-    {% endif %}
+      <!-- errors -->
+      {% if error %}
+        <div class="alert alert-warning alert-dismissible error_msg"><p><strong>Error:</strong> {{ error }}</p></div>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {% endif %}
 
-    <!-- messages -->
-    {% for message in get_flashed_messages() %}
-    <div class="alert alert-info text-center" style="margin: 0px 300px 0px 300px;">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      {{ message }}
-    </div>
-    {% endfor %}
+      <!-- messages -->
+      {% for message in get_flashed_messages() %}
+      <div class=" alert alert-success flash_msg">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+      {% endfor %}
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    {% block js %}{% endblock %}
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+      {% block js %}{% endblock %}
+    </section>
   </body>
 </html>

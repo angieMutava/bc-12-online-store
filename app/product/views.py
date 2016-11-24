@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, request, url_for, Blueprint  # current_app
+from flask import flash, redirect, render_template, request, url_for, Blueprint, session  # current_app
 from forms import ProductForm
 from app import db
 from app.models import Store, Product, User
@@ -20,6 +20,9 @@ product_blueprint = Blueprint(
 def overview(id):
     # store = Store.query.filter_by(store_owner=current_user.id).first()
     store = Store.query.get(id)
+
+    session['store_id'] = id
+
     display_product = Product.query.filter_by(store_home=store.id).all()  # store.store_product.all()
     all_products = len(display_product)
 
@@ -53,13 +56,14 @@ def product():
                 # filename = secure_filename(file.filename)
                 # file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
 
-            store = Store.query.filter_by(store_owner=current_user.id).first()
-            created_products = Product(product_name=form.product_name.data, product_description=form.product_desc.data, store_home=store.id)
+            # store = Store.query.filter_by(store_owner=current_user.id).first()
+            store = session['store_id']
+            created_products = Product(product_name=form.product_name.data, product_description=form.product_desc.data, store_home=store)
 
             db.session.add(created_products)
             db.session.commit()
             flash("Product added successfully!")
-            return redirect(url_for('product.overview', id=store.id))
+            return redirect(url_for('product.overview', id=store))
 
         return render_template('product/overview.html')
 
