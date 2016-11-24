@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, url_for, Blueprint
+from flask import redirect, render_template, request, url_for, Blueprint, session
 from forms import LoginForm, SignupForm
 from app import db
 from app.models import User, bcrypt
@@ -35,6 +35,10 @@ def login():
 @auth_blueprint.route('/logout')
 @login_required
 def logout():
+    user = current_user
+    user.authenticated = False
+    db.session.add(user)
+    db.session.commit()
     logout_user()
     return redirect(url_for('main.index'))
 
