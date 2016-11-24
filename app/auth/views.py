@@ -26,7 +26,6 @@ def login():
             user = User.query.filter_by(email=email).first()
             if user is not None and bcrypt.check_password_hash(user.password, request.form['password']):
                 login_user(user)
-                flash('You were just logged in!')
                 return redirect(url_for('store.overview'))
             else:
                 error = 'Invalid credentials. Please try again.'
@@ -37,12 +36,12 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('You were just logged out!')
     return redirect(url_for('main.index'))
 
 
 @auth_blueprint.route('/signup', methods=['GET', 'POST'])
 def signup():
+    error = None
     form = SignupForm()
     if request.method == "POST":
         if form.validate_on_submit():
@@ -57,5 +56,5 @@ def signup():
             db.session.commit()
             return redirect(url_for('auth.login'))
         else:
-            flash('Invalid credentials. Please try again.')
+            error = 'Invalid credentials. Please try again.'
     return render_template('signup.html', form=form)

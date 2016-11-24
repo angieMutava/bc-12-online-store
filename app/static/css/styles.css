@@ -1,4 +1,6 @@
-/* BASE */
+/* ################################################################# */
+/* ########################### BASE ############################### */
+/* ################################################################# */
 
 html, body {
   font-family: 'Questrial', sans-serif;
@@ -13,45 +15,45 @@ html, body {
 }
 
 
-/* NAVBAR*/
+/* ################################ NAVIGATION ############################ */
 
-/* make sidebar nav vertical */
-/*@media (min-width: 768px) {*/
-  .sidebar-nav .navbar {
-    display: block;
-    position: absolute;
-    height: auto;
-    margin-left: 0px;
-    text-align: center;
-    padding: 25px 25px 25px 25px;
-    margin-bottom: 0px;
-    /*width: 100%;*/
-    margin: 0px;
-    padding: 0px;
-    position:fixed !important;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    height: -moz-calc(100% - 40px);
-    height: -webkit-calc(100% - 40px);
-    height: calc(100% - 40px);
-    display:block;
-    min-height:680px;
-  }
-
-.sidebar-nav .navbar .nav-pills {
-  width: auto;
+.sidebar-nav .navbar {
+  display: block;
+  position: absolute;
+  height: auto;
+  margin-left: 0px;
+  text-align: center;
+  padding: 25px 25px 25px 25px;
+  margin-bottom: 0px;
+  /*width: 100%;*/
+  margin: 0px;
+  padding: 0px;
+  position:fixed !important;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  height: -moz-calc(100% - 40px);
+  height: -webkit-calc(100% - 40px);
+  height: calc(100% - 40px);
+  display:block;
+  min-height:680px;
 }
 
-.sidebar-nav .navbar .navbar-default {
+.sidebar-nav .navbar {
+  width: auto;
+  color: #F6960E;
+}
+
+.sidebar-nav .nav-pills a {
+  color: #ffffff;
+  text-align: left;
+}
+
+.sidebar-nav .navbar-custom {
   background: #F6960E;
 }
 
-.navbar-default {
-    background-color: #F6960E;
-    border-color: transparent;
-  }
-  .sidebar-nav .navbar ul {
+.sidebar-nav .navbar ul {
     float: none;
     display: block;
     padding: 0px;
@@ -60,31 +62,31 @@ html, body {
     list-style: none;
   }
 
-  .sidebar-nav .navbar ul li {
+.sidebar-nav .navbar ul li {
     height: 20px;
     line-height: 20px;
     padding-right: 15px;
     text-align: center;
   }
-  .sidebar-nav .navbar ul li a,
-  .sidebar-nav .navbar ul li a:focus,
-  .sidebar-nav .navbar ul li a:active{
-    font-weight: bold;
-    font-size: 15pt;
-    text-decoration: none;
-    cursor: pointer;
-    margin-top: 20px;
+.sidebar-nav .navbar ul li a,
+.sidebar-nav .navbar ul li a:focus,
+.sidebar-nav .navbar ul li a:active{
+  font-weight: bold;
+  font-size: 15pt;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 20px;
 
-  }
-  .sidebar-nav .navbar ul li a:hover{
-    background-color: #555;
-    color: #fff;
-    cursor: pointer;
-  }
+}
+.sidebar-nav .navbar ul li a:hover{
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+}
 
 
 
-/* ERROR & FLASH*/
+/* ##################### ERRORS & FLASH MESSAGES ####################### */
 
 .error_msg {
   margin: 0px 400px 0px 400px;
@@ -95,9 +97,9 @@ html, body {
   position: fixed-top;
 }
 
-
-/* INDEX */
-
+/* ################################################################# */
+/* ########################### INDEX ############################### */
+/* ################################################################# */
 
 .landing {
   background:
@@ -168,7 +170,7 @@ html, body {
   text-decoration: none;
   outline: none;
   list-style: none;
-  color: #F6960E;#D0CAB2;
+  color: #F6960E;;
 }
 
 .landing .signup,
@@ -178,7 +180,13 @@ html, body {
   list-style: none;
 }
 
-/* REGISTRATION*/
+
+
+/* ######################################################################## */
+/* ########################### REGISTRATION ############################### */
+/* ######################################################################## */
+
+
 
 .signup_page{
   width: 100%;
@@ -240,3 +248,60 @@ html, body {
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
+
+
+
+/* ############################################################################ */
+/* ########################### OVERVIEW - STORE ############################### */
+/* ############################################################################ */
+
+.available_stores {
+
+}
+
+.return_number {
+  font-weight: bold;
+  font-size: 13pt;
+  margin: 50px 0px 40px 0px;
+}
+
+.btn-custom {
+  background-color: #F6960E;
+  color: #fff;
+  margin: 20px 0px 20px 0px;
+}
+
+.store_list a {
+  list-style: none;
+  font-weight: bold;
+  color: #F6960E;
+  text-decoration: none;
+  font-size: 13pt;
+}
+
+.store_list a:hover {
+  color: #000;
+}
+
+.store_list {
+  text-align: center;
+}
+
+.store_list .desc {
+  font-size: 13pt;
+}
+
+.prod_name {
+  list-style: none;
+  font-weight: bold;
+  color: #F6960E;
+  text-decoration: none;
+  font-size: 13pt;
+}
+
+
+
+
+/* ############################################################################### */
+/* ########################### OVERVIEW - PRODUCTS ############################### */
+/* ############################################################################### */
