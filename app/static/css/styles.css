@@ -291,3 +291,7 @@ html, body {
 .myjumbotron p {
   font-size: 12pt;
 }
+
+.add {
+  margin-top: 10px;
+}
