@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt, check_password_hash, generate_password_hash
 from flask_login import LoginManager
 import os
 
+
 # Create the application object
 app = Flask(__name__)
 
@@ -20,14 +21,18 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 # Create the sqlalchemy object
 db = SQLAlchemy(app)
 
+
+# Import blueprints
 from app.auth.views import auth_blueprint
 from app.main.views import main_blueprint
 from app.store.views import store_blueprint
+from app.product.views import product_blueprint
 
-# register blueprints
+# Register blueprints
 app.register_blueprint(auth_blueprint)
 app.register_blueprint(main_blueprint)
 app.register_blueprint(store_blueprint)
+app.register_blueprint(product_blueprint)
 
 
 from models import User

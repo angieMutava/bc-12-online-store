@@ -36,8 +36,8 @@ class User(db.Model):
     def get_id(self):
         return unicode(self.id)
 
-    """def __repr__(self):
-        return '<{} {}>'.format(self.fname, self.lname)"""
+    def __repr__(self):
+        return ""  # '<User %r>' % self.id
 
 
 class Store(db.Model):
@@ -46,13 +46,34 @@ class Store(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     store_name = db.Column(db.String, nullable=False)
     store_description = db.Column(db.String, nullable=False)
-    store_image = db.Column(db.String, nullable=False)
+    # store_image = db.Column(db.String, nullable=False)
     store_owner = db.Column(db.Integer, db.ForeignKey('users.id'))
+    store_product = db.relationship("Product", backref="storage", lazy='dynamic')
 
-    def __init__(self, store_name, store_description, store_image=None):
+    def __init__(self, store_name, store_description, store_owner):
         self.store_name = store_name
         self.store_description = store_description
-        self.store_image = store_image
+        self.store_owner = store_owner
+        # self.store_image = store_image
 
     def __repr__(self):
-        return '<{0} {1} {2} {3}>'.format(self.store_name, self.store_description, self.store_image, self.store_owner)
+        return ""  # '<Store %r>' % self.store_name
+
+
+class Product(db.Model):
+    __tablename__ = "products"
+
+    id = db.Column(db.Integer, primary_key=True)
+    product_name = db.Column(db.String, nullable=False)
+    product_description = db.Column(db.String, nullable=False)
+    # product_image = db.Column(db.String, nullable=False)
+    store_home = db.Column(db.Integer, db.ForeignKey('store.id'))
+
+    def __init__(self, product_name, product_description, store_home):
+        self.product_name = product_name
+        self.product_description = product_description
+        # self.product_image = product_image
+        self.store_home = store_home
+
+    def __repr__(self):
+        return ""  # '<Product %r>' % self.product_name

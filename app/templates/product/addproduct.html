@@ -5,15 +5,14 @@
 
   <div class="col-lg-4 col-md-offset-4">
     <div class="page-header text-center">
-          <h1>New Store</h1>
+          <h1>New Product</h1>
     </div>
     <div class= "jumbotron">
       <form method=post>
         {{ form.hidden_tag() }}
         <dl>
-           <dd>Name: {{ form.store_name(class_="u-full-width", placeholder="Store Name", maxlength=70)}}
-           <dd>Description: {{ form.store_desc(class_="u-full-width", placeholder="Store Description") }}
-           <dd>Image: {{ form.store_img(class_="u-full-width", placeholder="Store Image")}}
+           <dd>Name: {{ form.product_name(class_="u-full-width", placeholder="Product Name", maxlength=70)}}
+           <dd>Description: {{ form.product_desc(class_="u-full-width", placeholder="Product Description") }}
            <dt>{{ form.submit }}
          </dl>
        </form>

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+<section class="header">
+  <center>
+    <h2 class="title">Oops! Not Found</h2>
+    <div class="container-fluid">
+      <p>We looked everywhere. Everywhere! :(</p>
+      <p>Log back in maybe? :)</p>
+      <button type="button" class="btn btn-block"><a href="{{ url_for('auth.login') }}">LOG IN</a></button>      </div>
+    </div>
+  </center>
+</section>
+{% endblock %}

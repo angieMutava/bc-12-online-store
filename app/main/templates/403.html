@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+<section class="header">
+  <center>
+    <h2 class="title">Access Denied :/</h2>
+    <div class="container-fluid">
+      <p>Looks like they locked you out :(</p>
+      <p>Log in to go back inside :)</p>
+      <button type="button" class="btn btn-block"><a href="{{ url_for('auth.login') }}">LOG IN</a></button>
+    </div>
+  </center>
+</section>
+{% endblock %}

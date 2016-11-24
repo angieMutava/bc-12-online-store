@@ -1,35 +1,107 @@
-body {
+/* ################################################################# */
+/* ########################### BASE ############################### */
+/* ################################################################# */
+
+html, body {
   font-family: 'Questrial', sans-serif;
-}
-
-.navbar-default .navbar-nav {
-  list-style: none;
-}
-
-.navbar-default .navbar-brand,
-.navbar-default .navbar-nav li a{
-  color: #000000;
-  padding: 20px 30px 15px 30px;
-  margin: 0px;
-  font-size: 14pt;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.navbar-default .navbar-brand,
-.navbar-default .navbar-nav ul {
+  height: 100%;
   padding: 0px;
   margin: 0px;
-  text-align: center;
 }
+
 
 .fa {
   font-size: 20px;
 }
 
-/*index.html*/
 
+/* ################################ NAVIGATION ############################ */
+
+.sidebar-nav .navbar {
+  display: block;
+  position: absolute;
+  height: auto;
+  margin-left: 0px;
+  text-align: center;
+  padding: 25px 25px 25px 25px;
+  margin-bottom: 0px;
+  /*width: 100%;*/
+  margin: 0px;
+  padding: 0px;
+  position:fixed !important;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  height: -moz-calc(100% - 40px);
+  height: -webkit-calc(100% - 40px);
+  height: calc(100% - 40px);
+  display:block;
+  min-height:680px;
+}
+
+.sidebar-nav .navbar {
+  width: auto;
+  color: #F6960E;
+}
+
+.sidebar-nav .nav-pills a {
+  color: #ffffff;
+  text-align: left;
+}
+
+.sidebar-nav .navbar-custom {
+  background: #F6960E;
+}
+
+.sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    list-style: none;
+  }
+
+.sidebar-nav .navbar ul li {
+    height: 20px;
+    line-height: 20px;
+    padding-right: 15px;
+    text-align: center;
+  }
+.sidebar-nav .navbar ul li a,
+.sidebar-nav .navbar ul li a:focus,
+.sidebar-nav .navbar ul li a:active{
+  font-weight: bold;
+  font-size: 15pt;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 20px;
+
+}
+.sidebar-nav .navbar ul li a:hover{
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
+/* ##################### ERRORS & FLASH MESSAGES ####################### */
+
+.error_msg {
+  margin-right: 100px;
+  margin-left: 200px;
+  position: fixed;
+}
+.flash_msg {
+  margin-right: 100px;
+  margin-left: 200px;
+  position: fixed;
+}
+
+/* ################################################################# */
+/* ########################### INDEX ############################### */
+/* ################################################################# */
 
 .landing {
   background:
@@ -51,46 +123,187 @@ body {
 
 .landing .welcome {
   padding: 75px 20px 75px 20px;
-  margin: 50px 40px 20px 40px;
+  margin: 0px 40px 20px 40px;
   position: relative;
   text-align:center;
 }
 
+.landing .welcome .fa,
 .landing .welcome h1 {
-  font-size: 45pt;
+  font-size: 90pt;
+  padding-top: 30px;
 }
 
-.landing .login .btn {
+
+.landing .signup .btn {
   background-color: #F6960E;
 }
 
-.landing .signup .btn {
+.landing .signup .btn a,
+.landing .signup .btn a:focus,
+.landing .signup .btn a:active,
+{
+  text-decoration: none;
+  outline: none;
+  color: #D0CAB2;
+}
+
+.landing .signup .btn a:hover {
+  text-decoration: none;
+  outline: none;
+  color: #D0CAB2;
+}
+
+.landing .login .btn {
+  text-decoration: none;
+  outline: none;
   background-color: #D0CAB2;
 }
 
-.landing .login .btn a{
+.landing .login .btn a,
+.landing .login .btn a:focus,
+.landing .login .btn a:active,
+{
   text-decoration: none;
+  outline: none;
 }
 
-.landing .signup .btn a{
+.landing .login .btn a:hover{
   text-decoration: none;
+  outline: none;
+  list-style: none;
+  color: #F6960E;;
 }
 
 .landing .signup,
 .landing .login {
+  text-decoration: none;
+  outline: none;
+  list-style: none;
+}
+
+
+
+/* ######################################################################## */
+/* ########################### REGISTRATION ############################### */
+/* ######################################################################## */
+
+
+
+.signup_page{
+  width: 100%;
+  height: 100%;
+  min-height:680px;
+  margin-top: 6rem;
+  text-align: center;
+}
+
+.login_page{
+  width: 100%;
+  height: 100%;
+  min-height:680px;
+  margin-top: 6rem;
+  text-align: center;
+}
+
+.login_page h1,
+.signup_page h1 {
+  color: #F6960E;
+  font-weight: bold;
+  font-size: 40pt;
+  padding-top: 175px;
+}
+
+.login_page a,
+.signup_page a {
+  color: #F6960E;
+  font-weight: bold;
+}
+
+.reg_form {
+  margin: 0px;
+}
+
+.reg_form dl{
+  margin: 5px 0px 5px 0px;
 
 }
 
-/*login/signup*/
-
-form {
-  margin: 10px 0px 50px 0px;
+.reg_form dt{
+  margin: 0px;
 }
 
-.signup h3 {
-  margin-top: 150px;
+.reg_form dd{
+  margin: 0px;
 }
 
-.login h3 {
-  margin-top: 150px;
+.value-prop {
+  margin-top: 1rem;
 }
+
+
+.value-prop {
+  margin-top: 1rem;
+}
+
+.value-props {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+
+
+/* ############################################################################ */
+/* ########################### OVERVIEW - STORE ############################### */
+/* ############################################################################ */
+
+.available_stores {
+
+}
+
+.return_number {
+  font-weight: bold;
+  font-size: 13pt;
+  margin: 50px 0px 40px 0px;
+}
+
+.btn-custom {
+  background-color: #F6960E;
+  color: #fff;
+  margin: 20px 0px 20px 0px;
+}
+
+.store_list a {
+  list-style: none;
+  font-weight: bold;
+  color: #F6960E;
+  text-decoration: none;
+  font-size: 13pt;
+}
+
+.store_list a:hover {
+  color: #000;
+}
+
+.store_list {
+  text-align: center;
+}
+
+.store_list .desc {
+  font-size: 13pt;
+}
+
+.prod_name {
+  list-style: none;
+  font-weight: bold;
+  color: #F6960E;
+  text-decoration: none;
+  font-size: 13pt;
+}
+
+
+
+
+/* ############################################################################### */
+/* ########################### OVERVIEW - PRODUCTS ############################### */
+/* ############################################################################### */

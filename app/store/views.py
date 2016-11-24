@@ -1,14 +1,17 @@
-from flask import flash, redirect, render_template, request, url_for, Blueprint
-from forms import StoreForm
+# -*- coding: utf-8 -*-
+
+from flask import flash, redirect, render_template, request, url_for, Blueprint  # current_app
 from app import db
-from app.models import Store, User
+from app.models import Store, User, Product
 from flask_login import login_required, current_user
+from forms import StoreForm
+# import os
+# from werkzeug.utils import secure_filename
 
 
 # Config
 store_blueprint = Blueprint(
-    'store', __name__,
-    template_folder='templates'
+    'store', __name__
 )
 
 
@@ -22,8 +25,12 @@ def overview():
 
     Displays current_user's availbable stores if any
     """
-
-    return render_template('overview.html')
+    user = User.query.filter_by(id=current_user.id).first()
+    display_store = user.user_stores.all()
+    all_stores = 0
+    for i in display_store:
+        all_stores += 1
+    return render_template('/store/overview.html', display_stores=display_store, all_stores=all_stores)
 
 
 @store_blueprint.route('/addstore', methods=['GET', 'POST'])
@@ -34,22 +41,30 @@ def store():
     """
     form = StoreForm()
     if request.method == "GET":
-        return render_template('addstore.html', form=form)
+        return render_template('store/addstore.html', form=form)
     elif request.method == "POST":
         if form.validate_on_submit():
+            # file = request.files['store_image']
+            # filename = None
+            # if file and file.filename.split('.')[-1] in ['jpeg', 'png', 'jpg']:
+                # filename = secure_filename(file.filename)
+                # file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+
             user = User.query.filter_by(id=current_user.id).first()
-            created_stores = Store(store_name=form.store_name.data, store_description=form.store_desc.data, store_image=form.store_img.data)
+            created_stores = Store(store_name=form.store_name.data, store_description=form.store_desc.data, store_owner=current_user.id)
 
             user.user_stores.append(created_stores)
             db.session.add(created_stores)
             db.session.commit()
             flash("Store added successfully!")
-            return redirect(url_for('store.overview'))
+            # return redirect(url_for('store.overview'))
+            return redirect(request.args.get('next') or url_for('store.overview'))
 
         user = User.query.filter_by(id=current_user.id).first()
-        my_store = user.store.all()
+        display_store = user.user_stores.all()
+        display_store.store_owner
         all_stores = 0
-        for i in my_store:
+        for i in display_store:
             all_stores += 1
 
-        return render_template('addstore.html', store=my_store, all_stores=all_stores)
+        return render_template('store/addstore.html', display_stores=display_store, all_stores=all_stores)
