@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt, check_password_hash, generate_password_hash
 from flask_login import LoginManager
+# from flask_bootstrap import Bootstrap
 import os
 
 
@@ -10,6 +11,7 @@ app = Flask(__name__)
 
 # Create a Bycryp instance
 bcrypt = Bcrypt(app)
+# bootstrap = Bootstrap(app)
 
 # Create a LoginManager instance and configure for login
 login_manager = LoginManager()

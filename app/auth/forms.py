@@ -31,5 +31,4 @@ class LoginForm(Form):
     """
     email = StringField("Email", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
-    remember = BooleanField("Remember Me")
     submit = SubmitField("Log In")
