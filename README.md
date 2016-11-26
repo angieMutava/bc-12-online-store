@@ -24,9 +24,9 @@ It is uses Python as the development stack and Flask as the web development fram
 
 1. Clone the directory:
 
-          * Using HTTPS: ```git clone https://github.com/jackiemacharia/bc-12-online-store.git```
+          * Using HTTPS: git clone https://github.com/jackiemacharia/bc-12-online-store.git
 
-          * Using an SSH Key: ```git clone git@github.com:jackiemacharia/bc-12-online-store.git```
+          * Using an SSH Key: git clone git@github.com:jackiemacharia/bc-12-online-store.git
 
 2. Navigate to the app directory ```cd bc-12-online-store```
 
@@ -38,13 +38,13 @@ It is uses Python as the development stack and Flask as the web development fram
 
 6. Export ```DATABASE_URL``` and ```APP_SETTINGS``` paths.
 
-          * Using ```virtualenv```: run the following commands:
-                  * ```export DATABASE_URL="postgresql:///isokodb"```
-                  * ```export APP_SETTINGS="config.ProductionConfig"```
+          * Using virtualenv: run the following commands:
+                  * export DATABASE_URL="postgresql:///isokodb"
+                  * export APP_SETTINGS="config.ProductionConfig"
 
-          * Using ```virtualenvwrapper```: add the paths to postactivate and save:
-                  * ```export DATABASE_URL="postgresql:///isokodb"```
-                  * ```export APP_SETTINGS="config.ProductionConfig"```
+          * Using virtualenvwrapper: add the paths to postactivate and save:
+                  * export DATABASE_URL="postgresql:///isokodb"
+                  * export APP_SETTINGS="config.ProductionConfig"
 
 7. Initialize your PostgreSQL database and migrate the tables ```python manage.py db init``` ```python manage.py db migrate``` ```python manage.py db upgrade```
 
