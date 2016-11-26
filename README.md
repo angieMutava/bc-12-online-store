@@ -77,6 +77,11 @@ The following credentials are available for application demo:
 * [Bootstrap](https://getbootstrap.com/)
 * [Unsplash](https://unsplash.com/)
 
+
+### Continuous App Development
+Additionalfeatures will be on the ```herokuprep``` branch before merging to ```master``` and integrating with the deployed app. ```git checkout herokuprep```
+
+
 ### Still Pending
 
 * Application testing and coverage
