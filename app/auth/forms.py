@@ -5,9 +5,7 @@ from app.models import User
 
 
 class SignupForm(Form):
-    """
-    Signup form structure
-    """
+    """Signup form structure"""
     fname = StringField("First Name", validators=[DataRequired("Please enter your first name"), Length(min=2, max=20)])
     lname = StringField("Last Name", validators=[DataRequired("Please enter your last name"), Length(min=1, max=20)])
     email = StringField("Email", validators=[DataRequired("Please enter your email address"), Email("Please enter a valid email address"), Length(min=6, max=50)])
@@ -17,18 +15,18 @@ class SignupForm(Form):
     submit = SubmitField('Get Started')
 
     def validate_email(self, field):
+        """Ensure unique email on sign up"""
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('Email already registered.')
 
     def validate_username(self, field):
+        """Ensure unique username on sign up"""
         if User.query.filter_by(username=field.data).first():
             raise ValidationError('Username already in use.')
 
 
 class LoginForm(Form):
-    """
-    Login form structure
-    """
+    """Login form structure"""
     email = StringField("Email", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     remember = BooleanField("Remember Me")

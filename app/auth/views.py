@@ -1,3 +1,4 @@
+# Imports
 from flask import redirect, render_template, request, url_for, Blueprint, session
 from forms import LoginForm, SignupForm
 from app import db
@@ -32,6 +33,7 @@ def login():
     return render_template('login.html', form=form, error=error)
 
 
+# Logout routing
 @auth_blueprint.route('/logout')
 @login_required
 def logout():
@@ -43,6 +45,7 @@ def logout():
     return redirect(url_for('main.index'))
 
 
+# Signup route
 @auth_blueprint.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()

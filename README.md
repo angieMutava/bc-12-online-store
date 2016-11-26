@@ -88,3 +88,4 @@ Additionalfeatures will be on the ```herokuprep``` branch before merging to ```m
 * Additional app features and UI tweaks
 * Sign up email confirmation
 * Customize public urls to include store names
+* Error handling

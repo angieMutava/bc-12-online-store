@@ -5,8 +5,6 @@ from app import db
 from app.models import Store, User, Product
 from flask_login import login_required, current_user
 from forms import StoreForm
-# import os
-# from werkzeug.utils import secure_filename
 
 
 # Config
@@ -44,12 +42,6 @@ def store():
         return render_template('store/addstore.html', form=form)
     elif request.method == "POST":
         if form.validate_on_submit():
-            # file = request.files['store_image']
-            # filename = None
-            # if file and file.filename.split('.')[-1] in ['jpeg', 'png', 'jpg']:
-                # filename = secure_filename(file.filename)
-                # file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
-
             user = User.query.filter_by(id=current_user.id).first()
             created_stores = Store(store_name=form.store_name.data, store_description=form.store_desc.data, store_owner=current_user.id)
 
@@ -57,7 +49,6 @@ def store():
             db.session.add(created_stores)
             db.session.commit()
             flash("Store added successfully!")
-            # return redirect(url_for('store.overview'))
             return redirect(request.args.get('next') or url_for('store.overview'))
 
         user = User.query.filter_by(id=current_user.id).first()

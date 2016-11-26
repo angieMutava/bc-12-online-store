@@ -10,6 +10,7 @@ main_blueprint = Blueprint(
 )
 
 
+#Landing page routing
 @main_blueprint.route('/', methods=['GET'])
 def index():
     """
@@ -18,16 +19,19 @@ def index():
     return render_template('index.html')
 
 
+# Error handling
 @main_blueprint.errorhandler(403)
 def not_allowed(e):
     return render_template('403.html'), 403
 
 
+# Error handling
 @main_blueprint.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
 
+# Error handling
 @main_blueprint.errorhandler(500)
 def server_error(e):
     return render_template('500.html'), 500

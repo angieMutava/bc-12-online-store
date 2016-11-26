@@ -1,3 +1,5 @@
+# Imports
+
 from app import db
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
@@ -37,7 +39,7 @@ class User(db.Model):
         return unicode(self.id)
 
     def __repr__(self):
-        return ""  # '<User %r>' % self.id
+        return ""
 
 
 class Store(db.Model):
@@ -46,7 +48,6 @@ class Store(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     store_name = db.Column(db.String, nullable=False)
     store_description = db.Column(db.String, nullable=False)
-    # store_image = db.Column(db.String, nullable=False)
     store_owner = db.Column(db.Integer, db.ForeignKey('users.id'))
     store_product = db.relationship("Product", backref="storage", lazy='dynamic')
 
@@ -54,10 +55,9 @@ class Store(db.Model):
         self.store_name = store_name
         self.store_description = store_description
         self.store_owner = store_owner
-        # self.store_image = store_image
 
     def __repr__(self):
-        return ""  # '<Store %r>' % self.store_name
+        return ""
 
 
 class Product(db.Model):
@@ -66,14 +66,12 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_name = db.Column(db.String, nullable=False)
     product_description = db.Column(db.String, nullable=False)
-    # product_image = db.Column(db.String, nullable=False)
     store_home = db.Column(db.Integer, db.ForeignKey('store.id'))
 
     def __init__(self, product_name, product_description, store_home):
         self.product_name = product_name
         self.product_description = product_description
-        # self.product_image = product_image
         self.store_home = store_home
 
     def __repr__(self):
-        return ""  # '<Product %r>' % self.product_name
+        return ""

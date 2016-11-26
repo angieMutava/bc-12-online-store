@@ -1,10 +1,9 @@
+# Imports
 from flask import flash, redirect, render_template, request, url_for, Blueprint, session  # current_app
 from forms import ProductForm
 from app import db
 from app.models import Store, Product, User
 from flask_login import login_required, current_user
-# import os
-# from werkzeug.utils import secure_filename
 
 
 # Config
@@ -15,29 +14,17 @@ product_blueprint = Blueprint(
 
 ###### ROUTES ######
 
-
+# Your stores page routing
 @product_blueprint.route('/overview/<int:id>', methods=['GET', 'POST'])
 def overview(id):
-    # store = Store.query.filter_by(store_owner=current_user.id).first()
     store = Store.query.get(id)
 
     session['store_id'] = id
 
-    display_product = Product.query.filter_by(store_home=store.id).all()  # store.store_product.all()
+    display_product = Product.query.filter_by(store_home=store.id).all()
     all_products = len(display_product)
 
     return render_template('/product/overview.html', display_products=display_product, all_products=all_products)
-
-
-# Custom store url route
-# @product_blueprint.route('/product/<username>/<int:storeid>', methods=['GET', 'POST'])
-# def store_url(store_username, storeid):
-# user = User.query.filter_by(id=current_user.id)
-# store_username = user.username
-# store = Store.query.filter_by(store_owner=current_user).first()
-# storeid = store.id
-#  with product.test_request_context():
-#  return render_template('/store/overview.html', store_username=store_username, storeid=storeid)
 
 
 # Add product route
@@ -50,13 +37,6 @@ def product():
         return render_template('product/addproduct.html', form=form)
     elif request.method == "POST":
         if form.validate_on_submit():
-            # file = request.files['product_image']
-            # filename = None
-            # if file and file.filename.split('.')[-1] in ['jpeg', 'png', 'jpg']:
-                # filename = secure_filename(file.filename)
-                # file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
-
-            # store = Store.query.filter_by(store_owner=current_user.id).first()
             store = session['store_id']
             created_products = Product(product_name=form.product_name.data, product_description=form.product_desc.data, store_home=store)
 
@@ -66,8 +46,3 @@ def product():
             return redirect(url_for('product.overview', id=store))
 
         return render_template('product/overview.html')
-
-        # display_product = Product.query.filter_by(store_home=store.id).all()
-        # all_products = len(display_product)
-
-        # return render_template('product/overview.html', display_products=display_product, all_products=all_products)
