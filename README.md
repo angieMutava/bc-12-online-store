@@ -8,7 +8,7 @@ It is uses Python as the development stack and Flask as the web development fram
 
 
 ### Contributors
-* [@jackiemacharia](https://github.com/jackiemacharia)
+* [@jackiemacharia](https://github.com/andela-jmacharia)
 
 
 ### Project Requirements
@@ -24,9 +24,9 @@ It is uses Python as the development stack and Flask as the web development fram
 
 1. Clone the directory:
 
-          * Using HTTPS: git clone https://github.com/jackiemacharia/bc-12-online-store.git
+          * Using HTTPS: git clone https://github.com/andela-jmacharia/bc-12-online-store.git
 
-          * Using an SSH Key: git clone git@github.com:jackiemacharia/bc-12-online-store.git
+          * Using an SSH Key: git clone git@github.com:andela-jmacharia/bc-12-online-store.git
 
 2. Navigate to the app directory ```cd bc-12-online-store```
 
